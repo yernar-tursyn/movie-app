@@ -4,13 +4,14 @@ import { useEffect, useRef, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import { useParams } from 'next/navigation';
 import { Container, Typography, Box, CircularProgress } from '@mui/material';
+import YouTube, { YouTubePlayer } from 'react-youtube';
 import { movieStore } from '../stores/movieStore';
 
 export const MovieDetails = observer(() => {
     const params = useParams();
     const id = params.id as string;
     const [videoTime, setVideoTime] = useState(0);
-    const playerRef = useRef<any>(null);
+    const playerRef = useRef<YouTubePlayer | null>(null);
 
     useEffect(() => {
         if (id) {
