@@ -1,36 +1,32 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Movie App
 
-## Getting Started
+## Описание
 
-First, run the development server:
+Приложение для просмотра и поиска фильмов с использованием внешнего API. Основные возможности:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. **Страница списка фильмов**:  
+   Отображение списка фильмов с краткой информацией (название, год выпуска, постер).
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Страница поиска**:  
+   Поле поиска, которое отправляет запрос к API по мере ввода текста и обновляет список фильмов в режиме реального времени.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. **Подробная страница фильма**:  
+   При клике на карточку фильма открывается страница с полной информацией (описание, жанр, режиссёр, рейтинг и пр.), а также содержит встроенный `iframe` для видео (трейлер или любой другой источник).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. **Страница избранных фильмов**:  
+   Отображение всех фильмов, добавленных в избранное.
 
-## Learn More
+5. **Управление состоянием (MobX)**:  
+   Разделено на несколько хранилищ:
+   - Хранилище для избранных фильмов.
+   - Хранилище для списка фильмов и данных о текущем поисковом запросе.
+   - Хранилище для подробной информации о конкретном фильме.
 
-To learn more about Next.js, take a look at the following resources:
+## Технологии
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **React** – создание пользовательского интерфейса и компонентов.
+- **MobX** – управление состоянием (списки фильмов, избранное, текущий запрос, детальная информация о фильме).
+- **Material UI** – оформление и стилизация компонентов.
+- **API** – получение данных о фильмах через внешний или внутренний API (например, [OMDb API](http://www.omdbapi.com/)).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# movie-app
