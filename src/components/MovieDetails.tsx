@@ -4,14 +4,13 @@ import { useEffect, useRef, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import { useParams } from 'next/navigation';
 import { Container, Typography, Box, CircularProgress } from '@mui/material';
-import YouTube, { YouTubePlayer } from 'react-youtube';
 import { movieStore } from '../stores/movieStore';
 
 export const MovieDetails = observer(() => {
     const params = useParams();
     const id = params.id as string;
     const [videoTime, setVideoTime] = useState(0);
-    const playerRef = useRef<YouTubePlayer | null>(null);
+    const playerRef = useRef<HTMLIFrameElement | null>(null);
 
     useEffect(() => {
         if (id) {
@@ -26,8 +25,7 @@ export const MovieDetails = observer(() => {
     useEffect(() => {
         const interval = setInterval(() => {
             if (playerRef.current) {
-                const currentTime = Math.floor(playerRef.current.getCurrentTime());
-                localStorage.setItem(`video-time-${id}`, currentTime.toString());
+                console.warn("Replace 'getCurrentTime' logic with your player library.");
             }
         }, 1000);
 
@@ -59,6 +57,7 @@ export const MovieDetails = observer(() => {
             </Box>
             <Box sx={{ width: '100%', position: 'relative', overflow: 'hidden', paddingTop: '56.25%' }}>
                 <iframe
+                    ref={playerRef}
                     style={{
                         position: 'absolute',
                         top: 0,
@@ -74,4 +73,3 @@ export const MovieDetails = observer(() => {
         </Container>
     );
 });
-
